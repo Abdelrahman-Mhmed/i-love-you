@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I Love You! 💕</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Cormorant+Garamond:wght@300;400;600&family=Great+Vibes&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    
+    <div class="content">
+        <h1 id="title">I Love You! 💕</h1>
+        <div class="message">
+            <p>My dearest [Girlfriend's Name], you are the light of my life, the beat in my heart, and the reason I smile every day. I love you more than words can say. Happy Valentine's Day or whenever you're reading this! 💖</p>
+        </div>
+    </div>
+    
+    <div class="hearts" id="hearts-container"></div>
+
+    <script>
+        
+        // Click heart effect
+        document.addEventListener('click', (e) => {
+            const clickHeart = document.createElement('div');
+            clickHeart.className = 'click-heart';
+            clickHeart.innerHTML = '💕';
+            clickHeart.style.left = e.clientX + 'px';
+            clickHeart.style.top = e.clientY + 'px';
+            document.body.appendChild(clickHeart);
+            
+            setTimeout(() => clickHeart.remove(), 1000);
+        });
+        
+        // Floating hearts
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            const hearts = ['❤️', '💕', '💖', '💗', '💓', '💞', '💝', '💘'];
+            heart.innerHTML = hearts[Math.floor(Math.random() * hearts.length)];
+            heart.style.left = Math.random() * 100 + '%';
+            heart.style.animationDuration = (Math.random() * 4 + 6) + 's';
+            document.getElementById('hearts-container').appendChild(heart);
+            
+            setTimeout(() => {
+                heart.remove();
+            }, 10000);
+        }
+        
+        setInterval(createHeart, 400);
+        
+        // Title click effect
+        document.getElementById('title').addEventListener('click', function() {
+            for (let i = 0; i < 20; i++) {
+                setTimeout(() => {
+                    const clickHeart = document.createElement('div');
+                    clickHeart.className = 'click-heart';
+                    clickHeart.innerHTML = ['❤️', '💕', '💖', '💗'][Math.floor(Math.random() * 4)];
+                    const rect = this.getBoundingClientRect();
+                    clickHeart.style.left = (rect.left + rect.width / 2 + (Math.random() - 0.5) * 200) + 'px';
+                    clickHeart.style.top = (rect.top + rect.height / 2 + (Math.random() - 0.5) * 200) + 'px';
+                    document.body.appendChild(clickHeart);
+                    setTimeout(() => clickHeart.remove(), 1000);
+                }, i * 50);
+            }
+        });
+        
+        // Prevent context menu on long press
+        document.addEventListener('contextmenu', (e) => e.preventDefault());
+    </script>
+</body>
+</html>

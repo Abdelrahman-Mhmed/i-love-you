@@ -1,0 +1,180 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Cormorant Garamond', serif;
+    background: linear-gradient(135deg, #ffeef8 0%, #ffd6e8 25%, #fec8e1 50%, #ffb3d9 75%, #ffeef8 100%);
+    background-size: 400% 400%;
+    animation: gradientShift 20s ease infinite;
+    color: #6b2c57;
+    text-align: center;
+    overflow-x: hidden;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    cursor: auto;
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.content {
+    position: relative;
+    z-index: 10;
+    max-width: 800px;
+    padding: 40px;
+    animation: fadeInUp 1s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+h1 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 5.5em;
+    font-weight: 400;
+    margin-bottom: 30px;
+    color: #8b4c7a;
+    text-shadow: 2px 2px 8px rgba(139, 76, 122, 0.3),
+                 0 0 30px rgba(255, 182, 193, 0.4);
+    animation: pulse 2s infinite, glow 3s ease-in-out infinite;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    letter-spacing: 2px;
+}
+
+h1:hover {
+    transform: scale(1.15);
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+@keyframes glow {
+    0%, 100% { text-shadow: 2px 2px 8px rgba(139, 76, 122, 0.3), 0 0 30px rgba(255, 182, 193, 0.4); }
+    50% { text-shadow: 2px 2px 12px rgba(139, 76, 122, 0.5), 0 0 40px rgba(255, 182, 193, 0.6), 0 0 60px rgba(255, 182, 193, 0.4); }
+}
+
+.message {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5em;
+    font-weight: 400;
+    line-height: 2;
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 40px;
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(15px);
+    border-radius: 25px;
+    box-shadow: 0 12px 40px rgba(139, 76, 122, 0.15);
+    border: 2px solid rgba(255, 182, 193, 0.3);
+    animation: slideIn 1.2s ease-out 0.3s both;
+    color: #5a3a4f;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.hearts {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.heart {
+    position: absolute;
+    font-size: 2.5em;
+    color: #ff1493;
+    animation: float 8s linear infinite;
+    text-shadow: 0 0 10px rgba(255, 20, 147, 0.8);
+}
+
+@keyframes float {
+    0% { 
+        transform: translateY(100vh) rotate(0deg) scale(0.5); 
+        opacity: 0; 
+    }
+    10% { 
+        opacity: 1; 
+    }
+    90% { 
+        opacity: 1; 
+    }
+    100% { 
+        transform: translateY(-100px) rotate(360deg) scale(1.5); 
+        opacity: 0; 
+    }
+}
+
+.click-heart {
+    position: absolute;
+    font-size: 2em;
+    pointer-events: none;
+    animation: clickFloat 1s ease-out forwards;
+    z-index: 100;
+}
+
+@keyframes clickFloat {
+    0% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-100px) scale(1.5);
+    }
+}
+
+.counter {
+    display: none;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 0.9; }
+}
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 3em;
+    }
+    .message {
+        font-size: 1.1em;
+        padding: 20px;
+    }
+    .heart {
+        font-size: 2em;
+    }
+}
+
